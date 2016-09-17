@@ -27,7 +27,14 @@
 					The source code is open source.<br/>
 				 	fork our project on github @genesis. 
 				</p>
-			</div>		
+			</div>	
+
+			<div class="col-md-12 svg-holder">
+				<div class="macbook">
+					@include('guest.homepage.svg')
+					<div class="mac-title">Works on all your devices: desktops, tablets and even smart phones.</div>
+				</div>
+			</div>	
 		</div>
 	</div>
 @stop
