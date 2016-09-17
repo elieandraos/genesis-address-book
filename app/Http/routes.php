@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [ 'uses' => 'GuestController@index', 'as' => 'guest.home']);
 Route::get('auth/{provider}', 'LoginController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'LoginController@handleProviderCallback');

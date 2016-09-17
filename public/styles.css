@@ -1,0 +1,111 @@
+body
+{
+	background-color: #f8f8f8 !important; 
+	font-family: 'Miriam Libre' !important;
+	font-size: 12px;
+}
+body header 
+{
+	margin-bottom: 0 !important;
+}
+.top-nav
+{
+	margin-bottom: 0;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,.25);
+    border: 0 !important;
+}
+.top-nav a
+{
+	color: #4b4f56;
+	font-size: 15px;
+}
+nav ul li 
+{
+	list-style: none;
+}
+.nav>li>a.logo, .nav>li>a.logo:hover
+{
+	color: #2a2730;
+	text-decoration: none;
+	background-color: transparent !important;
+}
+.nav>li>a.animated:focus, .nav>li>a.animated:hover 
+{
+    text-decoration: none;
+    background-color: transparent !important;
+    box-shadow: inset 0 -4px #4b4f56;
+    transition: all .2s ease-in-out;
+}
+
+/**************
+ *   FOOTER   *
+ **************/
+.footer
+{
+	min-height: 200px;
+	color: #FFF;
+	background-color: #4b4f56;
+	padding-top: 20px;
+	margin-top: 70px;
+	text-align: center;
+}
+.footer a, .footer a:hover, .footer a:visited
+{
+	color: #FFF;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+/********************
+ *   LANDING PAGE   *
+ ********************/
+div#banner
+{
+ 	height: 420px;
+ 	width: 100%;
+ 	position: relative;
+ 	overflow: hidden;
+}
+div#banner img
+{
+	bottom: -25%;
+    height: auto;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+div#banner #caption
+{
+	box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 16px;
+    position: relative;
+    text-align: center;
+    top: 155px;
+    width: 1024px;
+    z-index: 1;
+    font-size: 60px;
+    line-height: 70px;
+    color: #fff;
+    font-weight: 200;
+    font-family: 'Lato';
+}
+.features
+{
+	margin-top: 50px;
+	color: #666;
+	font-weight: 200;
+	font-family: 'Lato';
+	font-size: 18px;
+	text-align: center;
+}
+.features .fa
+{
+	font-size: 64px;
+	margin-bottom: 10px;
+	color: #365899;
+}
+
+
+
