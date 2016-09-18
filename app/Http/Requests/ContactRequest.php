@@ -24,8 +24,9 @@ class ContactRequest extends Request
     public function rules()
     {
         return [
-            'phone' => 'required',
+            'phone' => 'required|numeric',
             'name' => 'required',
+            'email' => 'email'
         ];
     }
 }

@@ -31,5 +31,9 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/home', ['uses' => 'ContactsController@index', 'as' => 'contacts.index']);
 	Route::get('/contacts/create', ['uses' => 'ContactsController@create', 'as' => 'contacts.create'])->middleware('ajax');
 	Route::post('/contacts/store', ['uses' => 'ContactsController@store', 'as' => 'contacts.store'])->middleware('ajax');
+	Route::get('/contacts/reload', ['uses' => 'ContactsController@reload', 'as' => 'contacts.reload'])->middleware('ajax');
+	Route::get('/contacts/{contactId}/edit', ['uses' => 'ContactsController@edit', 'as' => 'contacts.edit'])->middleware('ajax');
+	Route::post('/contacts/{contactId}/update', ['uses' => 'ContactsController@update', 'as' => 'contacts.update'])->middleware('ajax');
+	Route::post('/contacts/{contactId}/delete', ['uses' => 'ContactsController@destroy', 'as' => 'contacts.delete'])->middleware('ajax');
 });
 

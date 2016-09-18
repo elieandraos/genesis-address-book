@@ -2,7 +2,7 @@ body
 {
 	background-color: #f8f8f8 !important; 
 	font-family: 'Miriam Libre' !important;
-	font-size: 12px;
+	font-size: 12px !important;
 	color: #4b4f56;
 }
 .page
@@ -214,5 +214,21 @@ div.social-buttons
 	margin-right: 10px;
 }
 
-
+/********************
+ *   CONTACT LIST   *
+ ********************/
+.contact-list
+{
+	background-color: #fff;
+	padding: 30px;
+}
+.contact-list tr th
+{
+	border-top: 0 !important;
+}
+.contact-list tr td form
+{
+	display: inline;
+	margin-left: 10px;
+}
 

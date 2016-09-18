@@ -27,5 +27,10 @@ class AppServiceProvider extends ServiceProvider
             'App\Genesis\Repositories\UserRepositoryInterface',
             'App\Genesis\Repositories\UserRepository'
         );
+
+        $this->app->bind(
+            'App\Genesis\Repositories\ContactRepositoryInterface',
+            'App\Genesis\Repositories\ContactRepository'
+        );        
     }
 }

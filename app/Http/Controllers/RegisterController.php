@@ -46,6 +46,6 @@ class RegisterController extends Controller
         $user = $this->userRepos->create($input);
         
         auth()->login($user);
-        return redirect('/');
+        return redirect('/home');
     }
 }

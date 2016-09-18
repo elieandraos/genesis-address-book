@@ -17,7 +17,7 @@ class LoginController extends Controller
 
 	public function __construct()
 	{
-		$this->allowedPoviders = ['facebook', 'gihub'];
+		$this->allowedPoviders = ['facebook', 'github'];
 	}
 
     /**

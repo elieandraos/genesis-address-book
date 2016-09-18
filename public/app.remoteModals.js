@@ -93,13 +93,6 @@ function renderErrors(data, form)
     }
 }
 
-/*
- * Clear the modal body and render a success message.
- */
-function displaySuccessMessage(data, form)
-{
-	$("#bootstrap-modal .modal-body").html("").html(data.message);
-}
 
  /*
   * Set loader image before ajax request
