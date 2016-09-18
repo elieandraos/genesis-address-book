@@ -3,7 +3,66 @@ body
 	background-color: #f8f8f8 !important; 
 	font-family: 'Miriam Libre' !important;
 	font-size: 12px;
+	color: #4b4f56;
 }
+.page
+{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+h5.title
+{
+	font-size: 22px;
+	margin-bottom: 20px;
+}
+.frm-row label
+{
+	font-size: 12px;
+}
+.frm-row
+{
+	margin-bottom: 10px;
+}
+.frm-row input[type=text],
+.frm-row input[type=password]
+{
+	padding: 5px;
+	width: 100%;
+}
+.invalid-text
+{
+	color: red;
+	font-size: 11px;
+}
+.btn-primary
+{
+	background-color: #2BA6CB !important;
+	border: 0 !important;
+}
+.btn-primary:hover 
+{
+    background-color: #34495E !important;
+}
+.btn-form
+{
+	border: 0 none;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 20px 14px;
+    margin-top: 10px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+/**************
+ *   HEADER   *
+ **************/
 body header 
 {
 	margin-bottom: 0 !important;
@@ -45,7 +104,7 @@ nav ul li
 {
 	min-height: 200px;
 	color: #FFF;
-	background-color: #4b4f56;
+	background-color: #34495E;
 	padding-top: 20px;
 	margin-top: 70px;
 	text-align: center;
@@ -104,7 +163,7 @@ div#banner #caption
 {
 	font-size: 64px;
 	margin-bottom: 10px;
-	color: #365899;
+	color: #34495E;
 }
 .macbook
 {
@@ -120,6 +179,32 @@ div#banner #caption
     left: 50%;
     text-align: center;
     margin-left: -150px;
+}
+
+/******************
+ *   LOGIN PAGE   *
+ ******************/
+.login-panel
+{
+	background-color:#fff;
+	box-shadow: 0 1px 1px rgba(0,0,0,.25);
+	padding: 20px;
+}
+.social-login
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+div.social-buttons
+{
+	text-align: center;
+}
+.btn-social
+{
+	display: inline !important;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 

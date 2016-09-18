@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Socialite;
 use App\Models\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use App\Genesis\Services\SocialAccountService;
 
@@ -17,6 +19,36 @@ class LoginController extends Controller
 	{
 		$this->allowedPoviders = ['facebook', 'gihub'];
 	}
+
+    /**
+     * Displays the login page.
+     * 
+     * @return type
+     */
+    public function index()
+    {
+        return view('guest.login');
+    }
+
+    /**
+     * Authenticate the user with email/password.
+     * 
+     * @param LoginRequest $request 
+     * @return type
+     */
+    public function authenticate(LoginRequest $request)
+    {
+        $input = $request->only(['email', 'password']);
+
+        if (Auth::attempt(['email' => $input['email'], 'password' => $input['password']]))
+        {   
+            return redirect('/home');
+        }
+        else
+        {
+            return redirect( route('auth.login'));
+        }
+    }
 
 	/**
 	 * Redirect the user to the social provider.
@@ -44,8 +76,18 @@ class LoginController extends Controller
     	$socialUser =  Socialite::driver($provider)->user();
     	$user = $service->findOrCreateSocialUser($socialUser, $provider);
 
-        auth()->login($user);
+        Auth::login($user);
+        return redirect('/home');
+    }
+
+    /**
+     * Logout the user.
+     * 
+     * @return type
+     */
+    public function logout()
+    {
+        Auth::logout();
         return redirect('/');
-        //return redirect()->to('/home');
     }
 }

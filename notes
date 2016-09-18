@@ -1,0 +1,3 @@
+- homepage inspired from facebook developers and laravel homepages.
+- socialite db schema ability to add multiple providers.
+- didnt user auth to keep it clean (the junk code of remember me, forget password ... is not used)

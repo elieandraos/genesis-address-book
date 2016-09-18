@@ -14,6 +14,7 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.0.0/bootstrap-social.min.css" />
 </head>
 <body>
 	<header class="top-nav navbar navbar-static-top">
@@ -23,7 +24,13 @@
 					<li><a href="javascript:void(0)" class="logo">Genesis Address Book</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" class="animated">Login</a></li>
+					@if(!Auth::check())
+						<li><a href="{!! route('auth.login') !!}" class="animated">Login</a></li>
+						<li><a href="{!! route('auth.register') !!}" class="animated">Register</a></li>
+					@else
+						<li><a href="javascript:void(0)">{!! Auth::user()->name !!}</a></li>
+						<li><a href="{!! route('auth.logout') !!}" class="animated">Logout</a></li>
+					@endif
 				</ul>
 			</nav>
 		</div>
@@ -35,7 +42,7 @@
 		<div class="container">
 			<div class="col-md-12">
 				<h6>Contributors</h6> 
-				<a href="http://github.com/elieandraos/" target="_blank">@Elie</a> - 
+				<a href="http://github.com/elieandraos/" target="_blank">@elieandraos</a> - 
 				<a href="https://github.com/GenesisDigital/" target="_blank">@GenesisDigital</a>
 			</div>
 		</div>
