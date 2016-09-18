@@ -60,6 +60,13 @@ h5.title
     border-radius: 5px;
     text-align: center;
 }
+.loader
+{
+	width: 100%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	text-align: center;
+}
 /**************
  *   HEADER   *
  **************/

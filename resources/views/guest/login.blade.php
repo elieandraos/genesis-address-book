@@ -24,7 +24,7 @@
 	                	<a class="btn btn-block btn-social btn-facebook" href="{!! route('auth.provider', 'facebook') !!}">
 						    <span class="fa fa-facebook"></span> Login with Facebook
 						</a>
-						<a class="btn btn-block btn-social btn-github" href="{!! route('auth.provider', 'github') !!}>
+						<a class="btn btn-block btn-social btn-github" href="{!! route('auth.provider', 'github') !!}">
 						    <span class="fa fa-github"></span> Login with Github
 						</a>
 					</div>

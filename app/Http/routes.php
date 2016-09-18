@@ -28,6 +28,8 @@ Route::group(['middleware' => ['auth']], function(){
 	//logout 
 	Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'auth.logout']);
 	//contacts
-	Route::get('/home', function(){ return "you are now logged in";});
+	Route::get('/home', ['uses' => 'ContactsController@index', 'as' => 'contacts.index']);
+	Route::get('/contacts/create', ['uses' => 'ContactsController@create', 'as' => 'contacts.create']);
+	Route::post('/contacts/store', ['uses' => 'ContactsController@store', 'as' => 'contacts.store']);
 });
 

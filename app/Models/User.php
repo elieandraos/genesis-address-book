@@ -33,4 +33,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\SocialAccount');
     }
+
+    /**
+     * Contacts relation.
+     * 
+     * @return type
+     */
+    public function contacts()
+    {
+        return $this->hasMany('App\Models\Contact');
+    }
 }

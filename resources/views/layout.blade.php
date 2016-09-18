@@ -21,7 +21,7 @@
 		<div class="container">
 			<nav class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="javascript:void(0)" class="logo">Genesis Address Book</a></li>
+					<li><a href="/" class="logo">Genesis Address Book</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					@if(!Auth::check())
@@ -37,6 +37,26 @@
 	</header>
 
 	@yield('content')
+	
+	<!-- Emmpty modal initialized -->
+	<div id="bootstrap-modal" class="modal fade" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="modal-title"></h4>
+				</div>
+				<div class="modal-body">
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default btn-form" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="footer">
 		<div class="container">
@@ -50,6 +70,8 @@
 
 	<!-- scripts -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" />
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="/app.remoteModals.js" ></script>
+	<script type="text/javascript" src="/app.main.js" ></script>
 </body>
 </html>
