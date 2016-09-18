@@ -27,13 +27,16 @@ Route::group(['middleware' => ['guest']], function(){
 Route::group(['middleware' => ['auth']], function(){
 	//logout 
 	Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'auth.logout']);
-	//contacts
 	Route::get('/home', ['uses' => 'ContactsController@index', 'as' => 'contacts.index']);
-	Route::get('/contacts/create', ['uses' => 'ContactsController@create', 'as' => 'contacts.create'])->middleware('ajax');
-	Route::post('/contacts/store', ['uses' => 'ContactsController@store', 'as' => 'contacts.store'])->middleware('ajax');
-	Route::get('/contacts/reload', ['uses' => 'ContactsController@reload', 'as' => 'contacts.reload'])->middleware('ajax');
-	Route::get('/contacts/{contactId}/edit', ['uses' => 'ContactsController@edit', 'as' => 'contacts.edit'])->middleware('ajax');
-	Route::post('/contacts/{contactId}/update', ['uses' => 'ContactsController@update', 'as' => 'contacts.update'])->middleware('ajax');
-	Route::post('/contacts/{contactId}/delete', ['uses' => 'ContactsController@destroy', 'as' => 'contacts.delete'])->middleware('ajax');
+
+	Route::group(['middleware' => ['auth', 'ajax']], function(){
+		//Make these requests only available via ajax (browser will return 404)
+		Route::get('/contacts/create', ['uses' => 'ContactsController@create', 'as' => 'contacts.create']);
+		Route::post('/contacts/store', ['uses' => 'ContactsController@store', 'as' => 'contacts.store']);
+		Route::get('/contacts/reload', ['uses' => 'ContactsController@reload', 'as' => 'contacts.reload']);
+		Route::get('/contacts/{contactId}/edit', ['uses' => 'ContactsController@edit', 'as' => 'contacts.edit'])->middleware('ownsContact');
+		Route::post('/contacts/{contactId}/update', ['uses' => 'ContactsController@update', 'as' => 'contacts.update'])->middleware('ownsContact');
+		Route::post('/contacts/{contactId}/delete', ['uses' => 'ContactsController@destroy', 'as' => 'contacts.delete'])->middleware('ownsContact');
+	});	
 });
 
