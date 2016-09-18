@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function(){
 
 	Route::group(['middleware' => ['auth', 'ajax']], function(){
 		//Make these requests only available via ajax (browser will return 404)
+		//Edit and Delete have an extra security layer with middleware that checks that the user owns the contact.
 		Route::get('/contacts/create', ['uses' => 'ContactsController@create', 'as' => 'contacts.create']);
 		Route::post('/contacts/store', ['uses' => 'ContactsController@store', 'as' => 'contacts.store']);
 		Route::get('/contacts/reload', ['uses' => 'ContactsController@reload', 'as' => 'contacts.reload']);
