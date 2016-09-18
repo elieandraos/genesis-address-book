@@ -2,4 +2,6 @@
 - socialite db schema ability to add multiple providers.
 - didnt user auth to keep it clean (the junk code of remember me, forget password ... is not used)
 - user repositories
-- packages / assets third parties
+- packages / assets third parties listing
+- created js file to hook modals to get ajaxified
+- middleware only ajax requests

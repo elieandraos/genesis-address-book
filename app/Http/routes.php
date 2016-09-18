@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'auth.logout']);
 	//contacts
 	Route::get('/home', ['uses' => 'ContactsController@index', 'as' => 'contacts.index']);
-	Route::get('/contacts/create', ['uses' => 'ContactsController@create', 'as' => 'contacts.create']);
-	Route::post('/contacts/store', ['uses' => 'ContactsController@store', 'as' => 'contacts.store']);
+	Route::get('/contacts/create', ['uses' => 'ContactsController@create', 'as' => 'contacts.create'])->middleware('ajax');
+	Route::post('/contacts/store', ['uses' => 'ContactsController@store', 'as' => 'contacts.store'])->middleware('ajax');
 });
 
