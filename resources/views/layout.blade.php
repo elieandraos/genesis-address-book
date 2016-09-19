@@ -21,8 +21,9 @@
 		<div class="container">
 			<nav class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="/" class="logo">Genesis Address Book</a></li>
+					<li><a href="@if(Auth::check()) /home @else / @endif" class="logo">Genesis Address Book</a></li>
 				</ul>
+				
 				<ul class="nav navbar-nav navbar-right">
 					@if(!Auth::check())
 						<li><a href="{!! route('auth.login') !!}" class="animated">Login</a></li>
@@ -32,6 +33,11 @@
 						<li><a href="{!! route('auth.logout') !!}" class="animated">Logout</a></li>
 					@endif
 				</ul>
+
+				@if(Auth::check())
+					<input type="text" class="search-bar" id="search-bar" placeholder="Search contacts..." autocomplete="off" />
+				@endif
+
 			</nav>
 		</div>
 	</header>
@@ -71,7 +77,9 @@
 	<!-- scripts -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 	<script type="text/javascript" src="/app.remoteModals.js" ></script>
+	<script type="text/javascript" src="/app.typeAhead.js" ></script>
 	<script type="text/javascript" src="/app.main.js" ></script>
 </body>
 </html>

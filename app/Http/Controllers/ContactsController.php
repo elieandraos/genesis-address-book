@@ -104,4 +104,24 @@ class ContactsController extends Controller
     	$contact->delete();
 		return Response::json(['status' => 200, 'message' => 'Contact deleted.']);    
 	}
+
+    /**
+     * Search (my) contacts by name, email and phone.
+     * 
+     * @param Request $request 
+     * @return type
+     */
+    public function search(Request $request)
+    {
+        $input = $request->only('q');
+        $q = $input['q'];
+
+        $data = $this->user->load(['contacts' => function ($query) use ($q) {
+            $query->where('name', 'like', '%'.$q.'%')                       
+                ->orWhere('email', 'like', '%'.$q.'%')
+                ->orWhere('phone', 'like', '%'.$q.'%');
+        }]);
+
+        return Response::json($data->contacts);
+    }
 }

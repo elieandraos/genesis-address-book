@@ -1,7 +1,3 @@
-$(document).ready(function(){
-	initRemoteModals();
-})
-
 /*
  * Add all the events related to remote modals 
  */

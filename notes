@@ -4,4 +4,4 @@
 - user repositories to abstract away database operations from controller logic
 - packages / assets third parties listing
 - created js file to hook modals to get ajaxified
-- middleware only ajax requests
+- middleware onlyAjax, ownsContact requests

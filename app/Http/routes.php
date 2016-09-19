@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth']], function(){
 	//logout 
 	Route::get('/logout', ['uses' => 'LoginController@logout', 'as' => 'auth.logout']);
 	Route::get('/home', ['uses' => 'ContactsController@index', 'as' => 'contacts.index']);
+	Route::get('contacts/search', ['uses' => 'ContactsController@search', 'as' => 'contacts.search']);
 
 	Route::group(['middleware' => ['auth', 'ajax']], function(){
 		//Make these requests only available via ajax (browser will return 404)
