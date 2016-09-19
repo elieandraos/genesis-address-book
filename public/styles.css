@@ -81,7 +81,14 @@ button:focus
 {
     outline: none;
 }
-
+h5.modal-subtitle
+{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-family: 'Lato';
+	font-weight: 200;
+	font-size: 15px;
+}
 /**************
  *   HEADER   *
  **************/
@@ -293,4 +300,20 @@ div.social-buttons
 	display: inline;
 	margin-left: 10px;
 }
-
+/**********************
+ *   CONTACT FIELDS   *
+ **********************/
+div#custom-fields
+{
+	margin-bottom: 15px;
+}
+div#custom-fields input
+{
+	margin-bottom: 5px;
+	font-size: 12px;
+}
+.remove-field
+{
+	margin-left: 5px;
+	cursor: pointer;
+}

@@ -73,7 +73,7 @@ function ajaxifyForm(form)
 
 /* 
  * Render the errors received from a Laravel validation request.
- * Rendering depends on my dom structure, 
+ * Rendering depends on my DOM structure, 
  * alternatively, i could add them at the top of the form and make it more generic.
  */
 function renderErrors(data, form)

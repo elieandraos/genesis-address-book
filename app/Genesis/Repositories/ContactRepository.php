@@ -3,6 +3,7 @@ namespace App\Genesis\Repositories;
 
 use App\Models\User;
 use App\Models\Contact;
+use App\Models\ContactField;
 
 class ContactRepository extends DbRepository implements ContactRepositoryInterface
 {
@@ -18,7 +19,10 @@ class ContactRepository extends DbRepository implements ContactRepositoryInterfa
 			abort(500);
 		
 		$input['user_id'] = $user->id;		
-		return Contact::create($input);
+		$contact = Contact::create($input);
+		$this->addFields($input, $contact);
+		
+		return $contact;
 	}
 
 	/**
@@ -30,7 +34,33 @@ class ContactRepository extends DbRepository implements ContactRepositoryInterfa
 	 */
 	public function update($input, Contact $contact)
 	{
-		return $contact->update($input);
+		$contact->update($input);
+		$this->addFields($input, $contact, true);
+		return $contact;
+	}
+
+	/**
+	 * Associate/sync fields with contact object.
+	 * 
+	 * @param type $input 
+	 * @param Contact $contact 
+	 * @return type
+	 */
+	protected function addFields($input, Contact $contact, $removeExisting = false)
+	{
+		if($removeExisting)
+			$contact->fields()->delete();
+
+		if(isset($input['fields']) && count($input['fields']))
+		{
+			$fields = $input['fields'];
+			$bulk = [];
+			//contsruct one array of objects to do one save.
+	        array_walk($fields, function($val, $key) use (&$bulk) {
+	            array_push($bulk, new ContactField(["value" => $val]));
+	        });
+	        $contact->fields()->saveMany($bulk);
+		}
 	}
 }
 

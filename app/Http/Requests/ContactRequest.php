@@ -26,7 +26,8 @@ class ContactRequest extends Request
         return [
             'phone' => 'required|numeric',
             'name' => 'required',
-            'email' => 'email'
+            'email' => 'email',
+            //'fields.*' => 'size:5'
         ];
     }
 }

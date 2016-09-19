@@ -2,3 +2,4 @@
 	@include('contacts._form')
 {!! Form::Close() !!}
 
+@include('contacts._field_skeleton')

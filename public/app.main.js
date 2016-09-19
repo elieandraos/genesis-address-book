@@ -1,7 +1,35 @@
 $(document).ready(function(){
 	initRemoteModals();
 	initTypeAhead();
+    initContactFields();
 })
+
+function initContactFields()
+{
+    // adding a fields
+    $("body").on("click", "a#add-fields", function(e) {
+        e.preventDefault();
+        var _skeleton = $("#skeleton").clone().attr('id', '').removeClass('hidden');
+        $("div#custom-fields").append(_skeleton);
+        checkNbFields();
+    });
+    // removing a field
+    $("body").on("click", ".remove-field", function(e) {
+        $(this).closest('div').remove();
+         checkNbFields();
+    });
+}
+
+/*
+ * Toggles the add field link when count reaches 5.
+ */
+function  checkNbFields()
+{
+    if($("div#custom-fields div").length >= 5)
+        $("#add-fields").hide();
+    else
+        $("#add-fields").show()
+}
 
 /*
  * Callback function for some modals: add/edit contact
