@@ -5,7 +5,7 @@ function initRemoteModals()
 {
 	//load any url inside a modal window
 	$("body").on("click", "button[data-toggle='remote-modal']", function() {
-		ajaxifyModalUrl($(this));
+		ajaxifyButtonLinks($(this));
 		return false;
 	});
 
@@ -18,21 +18,17 @@ function initRemoteModals()
 }
 
 /*
- *  Load a remote url inside the modal via ajax
- *  usage: <button data-toggle="remote-modal" data-url="{!! route('contacts.create') !!}" >
- *  optional: data-title, data-callback
+ * Load a remote url inside the modal via ajax
  */
-function ajaxifyModalUrl(_trigerer)
+function loadUrl(_url, _title, _callback)
 {
- 	var _url = _trigerer.data('url');
- 	var _title = _trigerer.data('title');
- 	var _callback = _trigerer.data('callback');
- 	if(!_url)
+	if(!_url)
  	{
  		console.log('data-url is required.');
  		return;
  	}
- 	$("#bootstrap-modal .modal-body").setLoaderImage();
+
+	$("#bootstrap-modal .modal-body").setLoaderImage();
  	$("#bootstrap-modal").modal({show:true});
  	$.ajax({
         method: 'GET',
@@ -69,6 +65,19 @@ function ajaxifyForm(form)
 			renderErrors(data, form);
 	    }
 	})
+}
+
+/*
+ *  Shortcut to loadUrl() from a button click.
+ *  usage: <button data-toggle="remote-modal" data-url="/my-url" >
+ *  optional: data-title, data-callback
+ */
+function ajaxifyButtonLinks(_trigerer)
+{
+ 	var _url = _trigerer.data('url');
+ 	var _title = _trigerer.data('title');
+ 	var _callback = _trigerer.data('callback');
+ 	loadUrl(_url, _title, _callback);
 }
 
 /* 

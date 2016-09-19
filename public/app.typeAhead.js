@@ -36,7 +36,7 @@ function initTypeAhead()
 		afterSelect: function(item)
 		{
 			$('.search-bar').val( item.name );
-			console.log(item.id);
+			loadUrl("/contacts/" + item.id + "/show", "Contact Details", null);
 		},
 		//apparenlty highlighter() method converts the displayText() html to text, 
 		//had to override that. https://github.com/bassjobsen/Bootstrap-3-Typeahead/issues/113
