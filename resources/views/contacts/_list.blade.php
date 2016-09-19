@@ -11,7 +11,7 @@
 			<td>{!! $contact->phone !!}</td>
 			<td>{!! $contact->email !!}</td>
 			<td>
-				<button type="button" class="btn btn-primary btn-xs" data-toggle="remote-modal" data-url="{!! route('contacts.edit', $contact->id) !!}" data-title="Edit Contact" >
+				<button type="button" class="btn btn-primary btn-xs" data-toggle="remote-modal" data-url="{!! route('contacts.edit', $contact->id) !!}" data-title="Edit Contact" data-callback="checkNbFields" >
 				 	Edit
 				</button>
 
