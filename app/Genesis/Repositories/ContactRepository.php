@@ -57,7 +57,8 @@ class ContactRepository extends DbRepository implements ContactRepositoryInterfa
 			$bulk = [];
 			//contsruct one array of objects to do one save.
 	        array_walk($fields, function($val, $key) use (&$bulk) {
-	            array_push($bulk, new ContactField(["value" => $val]));
+	           	if(trim($val))
+	           		array_push($bulk, new ContactField(["value" => $val]));
 	        });
 	        $contact->fields()->saveMany($bulk);
 		}

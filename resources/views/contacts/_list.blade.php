@@ -15,7 +15,7 @@
 				 	Edit
 				</button>
 
-				<button type="button" class="btn btn-primary btn-xs" data-toggle="remote-modal" data-url="{!! route('contacts.show', $contact->id) !!}" data-title="Contact Details" >
+				<button type="button" class="btn btn-success btn-xs" data-toggle="remote-modal" data-url="{!! route('contacts.show', $contact->id) !!}" data-title="Contact Details" >
 				 	Details
 				</button>
 
