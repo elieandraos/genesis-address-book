@@ -83,6 +83,17 @@ class ContactsController extends Controller
     }
 
     /**
+     * Shows the full details of the contact.
+     * 
+     * @param Contact $contact 
+     * @return type
+     */
+    public function show(Contact $contact)
+    {
+        return view('contacts.show', ['contact' => $contact]);
+    }
+
+    /**
      * Reload the table of contacts
      * 
      * @return type

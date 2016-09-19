@@ -15,6 +15,10 @@
 				 	Edit
 				</button>
 
+				<button type="button" class="btn btn-primary btn-xs" data-toggle="remote-modal" data-url="{!! route('contacts.show', $contact->id) !!}" data-title="Contact Details" >
+				 	Details
+				</button>
+
 				{!! Form::open(['route' => ['contacts.delete', $contact->id] , 'data-remote' => 'true', 'data-callback' => 'removeRow']) !!}
 			        <button class="btn btn-danger btn-xs" type="submit">
 			        	Remove
