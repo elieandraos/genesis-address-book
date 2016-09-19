@@ -19,4 +19,14 @@ class Contact extends Model
     {
     	return $this->belongsTo('App\Models\User');
     }
+
+    /**
+     * Contacts fields relation.
+     * 
+     * @return type
+     */
+    public function fields()
+    {
+        return $this->hasMany('App\Models\ContactField');
+    }
 }

@@ -115,7 +115,7 @@ class ContactsController extends Controller
     {
         $input = $request->only('q');
         $q = $input['q'];
-
+        //eager load the user contacts and filter them
         $data = $this->user->load(['contacts' => function ($query) use ($q) {
             $query->where('name', 'like', '%'.$q.'%')                       
                 ->orWhere('email', 'like', '%'.$q.'%')
