@@ -32,11 +32,11 @@ class CreateOrGetUserActiveCampaignList
         $activeCampaign = $event->activeCampaign;
 
         //if the list id is cached, don't proceed.
-        if(Cache::get($user->active_campagin_list))
+        if(Cache::get($user->active_campaign_list))
             return;
 
         $list = array(
-            "name"           =>  $user->active_campagin_list,
+            "name"           =>  $user->active_campaign_list,
             "sender_name"    => "My Company",
             "sender_addr1"   => "123 S. Street",
             "sender_city"    => "Chicago",
@@ -49,9 +49,12 @@ class CreateOrGetUserActiveCampaignList
         if ((int)$response->success) 
         {
             //all okay cache the list id.
-            Cache::forever($user->active_campagin_list, (int)$response->id );
+            Cache::forever($user->active_campaign_list, (int)$response->id );
         }
         else
+        {
+            Auth::logout(); //do not log him in
             Log::info($response->error);
+        }
     }
 }

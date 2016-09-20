@@ -49,7 +49,7 @@ class User extends Authenticatable
      * 
      * @return type
      */
-    public function getActiveCampaginListAttribute()
+    public function getActiveCampaignListAttribute()
     {
         return $this->email."_list";
     }

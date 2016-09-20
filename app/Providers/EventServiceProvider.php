@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserLoggedIn' => [
             'App\Listeners\CreateOrGetUserActiveCampaignList',
         ],
+
+        'App\Events\UserManageContact' => [
+            'App\Listeners\SyncActiveCampaignContact',
+        ],
     ];
 
     /**
