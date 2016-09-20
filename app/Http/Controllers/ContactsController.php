@@ -21,6 +21,7 @@ class ContactsController extends Controller
 	 */
 	public function __construct(ContactRepositoryInterface $contactRepos)
 	{
+        //$ac = app('ActiveCampaign');
 		$this->user = Auth::user();
 		$this->contactRepos = $contactRepos;
 	}

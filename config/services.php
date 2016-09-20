@@ -47,4 +47,9 @@ return [
         'redirect' => env('FACEBOOK_CALLBACK_URL'),
     ],
 
+    'activecampaign' => [
+        'url' => env('ACTIVE_CAMPAIGN_URL'),
+        'key' => env('ACTIVE_CAMPAIGN_KEY')
+    ],    
+
 ];
