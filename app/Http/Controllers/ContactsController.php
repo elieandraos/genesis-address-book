@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Cache;
 use Response;
 use App\Http\Requests;
 use App\Models\Contact;
@@ -21,9 +22,9 @@ class ContactsController extends Controller
 	 */
 	public function __construct(ContactRepositoryInterface $contactRepos)
 	{
-        //$ac = app('ActiveCampaign');
 		$this->user = Auth::user();
 		$this->contactRepos = $contactRepos;
+        $this->list_id = Cache::get($this->user->active_campagin_list);
 	}
 
 	/**

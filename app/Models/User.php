@@ -43,4 +43,14 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Contact');
     }
+
+    /**
+     * Accessor to identify user's active campaign list id.
+     * 
+     * @return type
+     */
+    public function getActiveCampaginListAttribute()
+    {
+        return $this->email."_list";
+    }
 }
