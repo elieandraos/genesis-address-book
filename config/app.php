@@ -149,11 +149,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Application Custom Service Providers...
-         */  
-        App\Providers\ActiveCampaignServiceProvider::class,
-
-        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
@@ -162,10 +157,16 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
+         * Application Custom Service Providers...
+         */  
+        App\Providers\ActiveCampaignServiceProvider::class,
+
+        /*
          * Third Party Service Providers...
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class
+        Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class
 
     ],
 
@@ -215,6 +216,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];
