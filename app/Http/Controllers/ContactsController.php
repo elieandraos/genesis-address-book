@@ -8,6 +8,7 @@ use Response;
 use App\Http\Requests;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Events\UserDeleteContact;
 use App\Events\UserManageContact;
 use App\Http\Requests\ContactRequest;
 use App\Genesis\Repositories\ContactRepositoryInterface;
@@ -116,8 +117,9 @@ class ContactsController extends Controller
      */
     public function destroy(Contact $contact)
     {
-    	//$contact->delete();
-        Event::fire(new UserManageContact($contact, 'delete'));
+        $email = $contact->email;
+        $contact->delete();
+        Event::fire(new UserDeleteContact($email, 'delete'));
 		return Response::json(['status' => 200, 'message' => 'Contact deleted.']);    
 	}
 

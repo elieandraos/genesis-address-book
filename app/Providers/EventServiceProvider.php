@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserManageContact' => [
             'App\Listeners\SyncActiveCampaignContact',
         ],
+        'App\Events\UserDeleteContact' => [
+            'App\Listeners\DeleteActiveCampaignContact',
+        ],
     ];
 
     /**

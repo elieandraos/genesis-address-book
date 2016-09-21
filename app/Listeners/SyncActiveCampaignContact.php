@@ -42,8 +42,6 @@ class SyncActiveCampaignContact implements ShouldQueue
                 $this->syncContact($contact, $activeCampaign);
                 break;
             default:
-                case 'delete':
-                $this->deleteContact($contact, $activeCampaign);
                 break;
         }
         
@@ -75,27 +73,6 @@ class SyncActiveCampaignContact implements ShouldQueue
         
         if(!(int)$response->success)
             Log::info('Active Campaign Sync Contact Error: '.$response->error);
-    }
-
-    /**
-     * Delete the contact in active campaign.
-     * @param type $contact 
-     * @param type $activeCampaign 
-     * @return type
-     */
-    protected function deleteContact($contact, $activeCampaign)
-    {
-        $response = $activeCampaign->api('contact/view?email='.$contact->email);
-        if(!(int)$response->success)
-           Log::info('Active Campaign View Contact Error: '.$response->error);
-       
-        //all is good, proceed.
-        $id = (int) $response->id;
-    
-        $response = $activeCampaign->api('contact/delete?id='.$id);
-
-        if(!(int)$response->success)
-            Log::info('Active Campaign Delete Contact Error: '.$response->error);
     }
 }
 
