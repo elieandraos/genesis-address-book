@@ -10,3 +10,29 @@
 andzilla.activehosted.com
 elieandraos31@gmail.com
 lynn662625
+
+----
+active campaign doesn't allow redundant emails: 
+resposne error: The email joyce.bg@gmail.com is in the system already, please edit that contact instead.  
+
+
+---
+Beanstalkd setup:
+vagrant ssh
+- sudo apt-get install beanstalkd
+- configure: sudo vi /etc/default/beanstalkd
+	add this at the end or uncomment if exists: START = yes
+	this is to enable startup during boot
+- we good to go, check if all is well, type in: beanstalkd -h (should list help commands)
+- type in cmd: sudo service beanstalkd start 
+	the process will start (Starting in-memory queueing server)
+
+To make it work with laravel, pull the following package from your laravel poject directory: 
+	add to composer.jon: 
+		 "pda/pheanstalk": "^3.0"
+	and run 
+		composer update
+change .env driver 
+		QUEUE_DRIVER=beanstalkd
+
+(ssh to your server and run php artisan queue:work or listen ) next we check supervisor to keep listening

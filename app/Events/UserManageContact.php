@@ -17,12 +17,10 @@ class UserManageContact extends Event
      *
      * @return void
      */
-    public function __construct($contact, $user, $action)
+    public function __construct($contact, $action)
     {
         $this->contact = $contact;
         $this->action = $action;
-        $this->user = $user;
-        $this->activeCampaign = app('ActiveCampaign');
     }
 
     /**

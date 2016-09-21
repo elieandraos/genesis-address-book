@@ -13,10 +13,6 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\UserLoggedIn' => [
-            'App\Listeners\CreateOrGetUserActiveCampaignList',
-        ],
-
         'App\Events\UserManageContact' => [
             'App\Listeners\SyncActiveCampaignContact',
         ],

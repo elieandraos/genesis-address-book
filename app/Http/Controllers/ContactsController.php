@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use Cache;
 use Event;
 use Response;
 use App\Http\Requests;
@@ -58,7 +57,7 @@ class ContactsController extends Controller
     public function store(ContactRequest $request)
     {
     	$contact = $this->contactRepos->create($request->all(), $this->user);
-        Event::fire(new UserManageContact($contact, $this->user, 'add'));
+        Event::fire(new UserManageContact($contact, 'add'));
     	return Response::json(['status' => 200, 'message' => 'Contact saved.']);
     }
 
@@ -83,7 +82,7 @@ class ContactsController extends Controller
     public function update(ContactRequest $request, Contact $contact)
     {
     	$contact = $this->contactRepos->update($request->all(), $contact);
-        Event::fire(new UserManageContact($contact, $this->user, 'edit'));
+        Event::fire(new UserManageContact($contact, 'edit'));
     	return Response::json(['status' => 200, 'message' => 'Contact updated.']);
     }
 

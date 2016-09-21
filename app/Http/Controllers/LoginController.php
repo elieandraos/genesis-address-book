@@ -44,7 +44,6 @@ class LoginController extends Controller
 
         if (Auth::attempt(['email' => $input['email'], 'password' => $input['password']]))
         {   
-            Event::fire(new UserLoggedIn(Auth::user()));
             return redirect('/home');
         }
         else
@@ -80,7 +79,6 @@ class LoginController extends Controller
     	$user = $service->findOrCreateSocialUser($socialUser, $provider);
 
         Auth::login($user);
-        Event::fire(new UserLoggedIn(Auth::user()));
         return redirect('/home');
     }
 

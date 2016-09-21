@@ -8,7 +8,7 @@ use App\Events\UserManageContact;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SyncActiveCampaignContact
+class SyncActiveCampaignContact implements ShouldQueue
 {
     protected $actions;
 
@@ -30,18 +30,16 @@ class SyncActiveCampaignContact
      */
     public function handle(UserManageContact $event)
     {
-        $activeCampaign = $event->activeCampaign;
+        $activeCampaign = app('ActiveCampaign');
         $contact = $event->contact;
         $action = $event->action;
-        $user = $event->user;
-        $list_id = Cache::get($user->active_campaign_list);
 
         if(!in_array($action, $this->actions))
             return;
 
         switch ($action) {
             case 'add': case 'edit':
-               $this->syncContact($contact, $activeCampaign, $list_id);
+                $this->syncContact($contact, $activeCampaign);
                 break;
             default:
                 break;
@@ -57,23 +55,21 @@ class SyncActiveCampaignContact
      * @param type $list_id 
      * @return type
      */
-    protected function syncContact($contact, $activeCampaign, $list_id)
+    protected function syncContact($contact, $activeCampaign)
     {
-        $fields = [];
+        /*$fields = [];
         foreach($contact->fields as $key => $field)
-            $fields["field[".$key.",0]"] = $field->value;
+            $fields[ rawurlencode("field[".$key.",0]")] = $field->value;
+        */
 
         $post = array(
             'email'                    => $contact->email,
             'first_name'               => $contact->name,
             'last_name'                => '',
             'phone'                    => $contact->phone,
-            'p['.$list_id.']'          => $list_id,
-            'status['.$list_id.']'     => 1, 
-            'instantresponders['.$list_id.']' => 0
         );
 
-        $post = array_merge($post, $fields);
+        //$post = array_merge($post, $fields);
         $response = $activeCampaign->api('contact/sync', $post);
         
         if((int)$response->success)
