@@ -32,7 +32,7 @@
 			<div class="col-md-12 svg-holder">
 				<div class="macbook">
 					@include('guest.homepage.svg')
-					<div class="mac-title">Works on all your devices: desktops, tablets and even smart phones.</div>
+					<div class="mac-title">Easy User experience.<br/>All in one page - no need to refresh.</div>
 				</div>
 			</div>	
 		</div>
