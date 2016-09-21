@@ -42,6 +42,8 @@ class SyncActiveCampaignContact implements ShouldQueue
                 $this->syncContact($contact, $activeCampaign);
                 break;
             default:
+                case 'delete':
+                $this->deleteContact($contact, $activeCampaign);
                 break;
         }
         
@@ -52,16 +54,10 @@ class SyncActiveCampaignContact implements ShouldQueue
      * 
      * @param type $contact 
      * @param type $activeCampaign 
-     * @param type $list_id 
      * @return type
      */
     protected function syncContact($contact, $activeCampaign)
     {
-        /*$fields = [];
-        foreach($contact->fields as $key => $field)
-            $fields[ rawurlencode("field[".$key.",0]")] = $field->value;
-        */
-
         $post = array(
             'email'                    => $contact->email,
             'first_name'               => $contact->name,
@@ -69,17 +65,37 @@ class SyncActiveCampaignContact implements ShouldQueue
             'phone'                    => $contact->phone,
         );
 
+        /*$fields = [];
+        foreach($contact->fields as $key => $field)
+            $fields[ rawurlencode("field[".$key.",0]")] = $field->value;
+        */
         //$post = array_merge($post, $fields);
+        
         $response = $activeCampaign->api('contact/sync', $post);
         
-        if((int)$response->success)
-        {
-            //cache the contact id of the list
-            //$contact_id = (int)$response->subscriber_id;
-        }
-        else
-        {
+        if(!(int)$response->success)
             Log::info('Active Campaign Sync Contact Error: '.$response->error);
-        }
-    } 
+    }
+
+    /**
+     * Delete the contact in active campaign.
+     * @param type $contact 
+     * @param type $activeCampaign 
+     * @return type
+     */
+    protected function deleteContact($contact, $activeCampaign)
+    {
+        $response = $activeCampaign->api('contact/view?email='.$contact->email);
+        if(!(int)$response->success)
+           Log::info('Active Campaign View Contact Error: '.$response->error);
+       
+        //all is good, proceed.
+        $id = (int) $response->id;
+    
+        $response = $activeCampaign->api('contact/delete?id='.$id);
+
+        if(!(int)$response->success)
+            Log::info('Active Campaign Delete Contact Error: '.$response->error);
+    }
 }
+

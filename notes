@@ -40,3 +40,24 @@ change .env driver
 
 Supervisor:
 ----------
+sudo apt-get install supervisor
+Y (prompt)
+cd /etc/supervisor/conf.d (supervisor loads all the the configurations files container in this directory)
+(add one for our queues now)
+sudo vi queue.conf
+
+(add the following and save)
+
+[program:queue]
+command=php artisan queue:listen --tries=2
+directory=/home/vagrant/Code/genesis-address-book 
+stdout_logfile=/home/vagrant/Code/genesis-address-book/storage/logs/supervisor.log
+redirect_stderr=true
+
+(directory is the project root in order artisan to be recognized)
+
+sudo supervisorctl 
+(type the following command)
+reread (reload all conf)
+add queue (queue is our prcess name)
+status (should give you running)

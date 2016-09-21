@@ -116,7 +116,8 @@ class ContactsController extends Controller
      */
     public function destroy(Contact $contact)
     {
-    	$contact->delete();
+    	//$contact->delete();
+        Event::fire(new UserManageContact($contact, 'delete'));
 		return Response::json(['status' => 200, 'message' => 'Contact deleted.']);    
 	}
 
