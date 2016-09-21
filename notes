@@ -18,6 +18,7 @@ resposne error: The email joyce.bg@gmail.com is in the system already, please ed
 
 ---
 Beanstalkd setup:
+-----------------
 vagrant ssh
 - sudo apt-get install beanstalkd
 - configure: sudo vi /etc/default/beanstalkd
@@ -36,3 +37,6 @@ change .env driver
 		QUEUE_DRIVER=beanstalkd
 
 (ssh to your server and run php artisan queue:work or listen ) next we check supervisor to keep listening
+
+Supervisor:
+----------
