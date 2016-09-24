@@ -63,8 +63,8 @@ class SyncActiveCampaignContact implements ShouldQueue
             'phone'                    => $contact->phone,
         );
 
-        foreach($contact->fields as $key => $field)
-            $post[ rawurlencode("field[".$key.",0]")] = $field->value;
+        // foreach($contact->fields as $key => $field)
+        //     $post[ rawurlencode("field[".$key.",0]")] = $field->value;
         
         //$post = array_merge($post, $fields);
         
